@@ -51,13 +51,13 @@ class Sql extends PDO
 	}
 
 	//Método que atualizada um registro do banco
-	public function update($rawQuery, $params = array()):int{
+	// public function update($rawQuery, $params = array()):int{
 
-		$stmt = $this->query($rawQuery, $params);
+	// 	$stmt = $this->query($rawQuery, $params);
 
-		return $stmt->rowCount();
+	// 	return $stmt->rowCount();
 
-	}
+	// }
 }
 
 ?>

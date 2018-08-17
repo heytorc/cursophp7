@@ -1,7 +1,8 @@
 <?php
 include_once("config.php");
 
-$sql = new Sql;
+$sql  = new Sql;
+$user = new Usuario;
 
 // $query 	= "SELECT * FROM users WHERE id = :id ORDER BY name";
 // $params = array(":id" => 1);
@@ -24,14 +25,24 @@ $sql = new Sql;
 
 //var_dump($auth);
 
-$user = new Usuario;
 
-$user->setName("Emilie");
-$user->setLogin("emilie");
-$user->setPassword("nina");
+//$user->setName("Emilie");
+//$user->setLogin("emilie");
+//$user->setPassword("nina");
 
-$usuario = $user->insert();
+//$usuario = $user->insert();
 
-echo json_encode($usuario);
+//echo json_encode($usuario);
+
+$usuario = $user->loadById(1);
+
+$user->setId($usuario[0]->id);
+$user->setName("Heytor Cavalcanti de Moura");
+$user->setLogin("heytor");
+$user->setPassword("123");
+
+$upd = $user->update();
+
+var_dump($user);
 
 ?>

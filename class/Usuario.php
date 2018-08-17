@@ -43,6 +43,16 @@ class Usuario extends Sql
         
     }
 
+    public function loadById($id){
+
+        $sql = new Sql();
+
+        $result = $sql->select("SELECT * FROM users WHERE id = :id", array(":id" => $id));
+
+        return $result;
+
+    }
+
     public function login($login, $password){
 
         $sql = new Sql();
@@ -82,6 +92,19 @@ class Usuario extends Sql
             return $results;
 
         }
+    }
+
+    public function update(){
+
+        $sql = new Sql;
+
+        $sql->query("UPDATE users SET name = :name, login = :login, password = :password WHERE id = :id", array(
+            ":id" => $this->getId(),
+            ":name" => $this->getName(),
+            ":login" => $this->getLogin(),
+            ":password" => $this->getPassword()
+        ));
+
     }
 }
 
