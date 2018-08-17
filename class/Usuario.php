@@ -106,6 +106,21 @@ class Usuario extends Sql
         ));
 
     }
+
+    public function delete(){
+
+        $sql = new Sql;
+
+        $sql->query("DELETE FROM users WHERE id = :id", array(
+            ":id" => $this->getId()
+        ));
+
+        $this->setId(null);
+        $this->setName(null);
+        $this->setLogin(null);
+        $this->setPassword(null);
+
+    }
 }
 
 

@@ -34,14 +34,20 @@ $user = new Usuario;
 
 //echo json_encode($usuario);
 
-$usuario = $user->loadById(1);
+// $usuario = $user->loadById(1);
 
+// $user->setId($usuario[0]->id);
+// $user->setName("Heytor Cavalcanti de Moura");
+// $user->setLogin("heytor");
+// $user->setPassword("123");
+
+// $upd = $user->update();
+
+// var_dump($user);
+
+$usuario = $user->loadById(8);
 $user->setId($usuario[0]->id);
-$user->setName("Heytor Cavalcanti de Moura");
-$user->setLogin("heytor");
-$user->setPassword("123");
-
-$upd = $user->update();
+$user->delete();
 
 var_dump($user);
 
