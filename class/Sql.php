@@ -48,7 +48,6 @@ class Sql extends PDO
 		
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
 
-
 	}
 
 	//Método que atualizada um registro do banco

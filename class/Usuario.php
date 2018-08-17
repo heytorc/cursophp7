@@ -4,7 +4,7 @@ class Usuario extends Sql
 {
     private $id;
     private $name;
-    private $email;
+    private $login;
     private $password;
 
     public function setId($id){
@@ -23,12 +23,12 @@ class Usuario extends Sql
         return $this->name;
     }
 
-    public function setEmail($email){
-        $this->email = $email;
+    public function setLogin($login){
+        $this->login = $login;
     }
 
-    public function getEmail(){
-        return $this->email;
+    public function getLogin(){
+        return $this->login;
     }
 
     public function setPassword($password){
@@ -59,6 +59,29 @@ class Usuario extends Sql
 
         return $sql->select("SELECT * FROM users WHERE name LIKE :name ORDER BY name", array(":name" => "%".$name."%"));
 
+    }
+
+    public function setData($data){
+
+        $this->setName($data['name']);
+        $this->setLogin($data['login']);
+        $this->setPassword($data['password']);
+
+    }
+
+    public function insert(){
+
+        $sql = new Sql();
+
+        $results = $sql->select("CALL sp_users_insert(:name, :login, :password)", array(":name" => $this->getName(),":login" => $this->getLogin(), ":password" => $this->getPassword()));
+
+        if(count($results) > 0){
+            
+            //$this->setData($results[0]);
+
+            return $results;
+
+        }
     }
 }
 

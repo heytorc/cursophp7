@@ -23,4 +23,15 @@ $sql = new Sql;
 //$auth = $user->login("heytor", "admin");
 
 //var_dump($auth);
+
+$user = new Usuario;
+
+$user->setName("Emilie");
+$user->setLogin("emilie");
+$user->setPassword("nina");
+
+$usuario = $user->insert();
+
+echo json_encode($usuario);
+
 ?>
